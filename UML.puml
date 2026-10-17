@@ -1,0 +1,30 @@
+@startuml
+class Main
+class GreenhouseFacade
+class AdminFacade
+class Job
+class JobRepository
+package "A - Irrigation Scheduling" {class Schedule;class SoilRule;class ScheduleRepository;class ScheduleService}
+package "B - Ventilation" {class Ventilation;class ClimateRule;class VentilationRepository;class VentilationService}
+package "C - Nutrient Dispatch" {class Nutrients;class NutrientRule;class NutrientsRepository;class NutrientService}
+Main --> GreenhouseFacade
+Main --> AdminFacade
+GreenhouseFacade --> ScheduleService
+GreenhouseFacade --> VentilationService
+GreenhouseFacade --> NutrientService
+GreenhouseFacade --> JobRepository
+AdminFacade --> ScheduleService
+AdminFacade --> VentilationService
+AdminFacade --> NutrientService
+AdminFacade --> JobRepository
+JobRepository --> Job
+ScheduleService --> SoilRule
+ScheduleService --> ScheduleRepository
+ScheduleRepository --> Schedule
+VentilationService --> ClimateRule
+VentilationService --> VentilationRepository
+VentilationRepository --> Ventilation
+NutrientService --> NutrientRule
+NutrientService --> NutrientsRepository
+NutrientsRepository --> Nutrients
+@enduml
